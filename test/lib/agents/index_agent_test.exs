@@ -16,7 +16,7 @@ defmodule PhoenixFrontendDeploys.IndexAgentTest do
   test "Stores the index.html file in agent" do
     result = IndexAgent.get
 
-    assert result == "index.html"
+    assert Regex.match?(~r/index.html/, result)
   end
 
   test "Updates the file based on content of live file" do
@@ -25,7 +25,7 @@ defmodule PhoenixFrontendDeploys.IndexAgentTest do
 
     result = IndexAgent.get
 
-    assert result == "index2.html"
+    assert Regex.match?(~r/index2.html/, result)
   end
 
 
