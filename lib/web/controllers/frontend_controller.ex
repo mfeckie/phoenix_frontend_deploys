@@ -1,8 +1,13 @@
 defmodule PhoenixFrontendDeploys.FrontendController do
   use PhoenixFrontendDeploys.Web, :controller
 
+  alias PhoenixFrontendDeploys.IndexAgent
+
   def index(conn, _params) do
     conn
-    |> send_resp(200, "OK")
+    |> send_file(200, get_index)
   end
+
+
+  defp get_index, do: IndexAgent.get
 end

@@ -22,7 +22,6 @@ defmodule PhoenixFrontendDeploys.IndexAgent do
   def update_index do
     Agent.update(__MODULE__, fn _ ->
       get_live_index_filename
-      |> cache_index
     end)
   end
 
@@ -32,8 +31,7 @@ defmodule PhoenixFrontendDeploys.IndexAgent do
   end
 
   defp cache_index(filename) do
-    index_file_path = Path.join([@asset_directory, filename])
-    File.read!(index_file_path)
+    Path.join([@asset_directory, filename])
   end
 
 end

@@ -8,7 +8,8 @@ defmodule PhoenixFrontendDeploys do
 
     children = [
       # Define workers and child supervisors to be supervised
-      worker(PhoenixFrontendDeploys.IndexAgent, [])
+      worker(PhoenixFrontendDeploys.IndexAgent, []),
+      worker(PhoenixFrontendDeploys.Endpoint, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

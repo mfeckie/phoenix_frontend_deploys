@@ -12,7 +12,7 @@ defmodule PhoenixFrontendDeploys.Mixfile do
   end
 
   def application do
-    [applications: [:logger],
+    [applications: [:logger, :plug],
      mod: {PhoenixFrontendDeploys, []}]
   end
 

@@ -13,15 +13,10 @@ defmodule PhoenixFrontendDeploys.IndexAgentTest do
     File.write!(Path.join([Application.get_env(:phoenix_frontend_deploys, :asset_directory), "live"]), index_name)
   end
 
-  defp fixture_file do
-    Path.join([Application.get_env(:phoenix_frontend_deploys, :asset_directory), "index.html"])
-    |> File.read!
-  end
-
   test "Stores the index.html file in agent" do
     result = IndexAgent.get
 
-    assert result == fixture_file
+    assert result == "index.html"
   end
 
   test "Updates the file based on content of live file" do
@@ -30,7 +25,7 @@ defmodule PhoenixFrontendDeploys.IndexAgentTest do
 
     result = IndexAgent.get
 
-    assert result == "Index2\n"
+    assert result == "index2.html"
   end
 
 
