@@ -19,9 +19,10 @@ defmodule PhoenixFrontendDeploys.IndexAgent do
     Agent.get(__MODULE__, fn index -> index end)
   end
 
-  def update_index(filename) do
+  def update_index do
     Agent.update(__MODULE__, fn _ ->
-      cache_index(filename)
+      get_live_index_filename
+      |> cache_index
     end)
   end
 
