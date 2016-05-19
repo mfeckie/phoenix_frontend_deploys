@@ -4,7 +4,7 @@ defmodule PhoenixFrontendDeploys.IndexAgentTest do
   alias PhoenixFrontendDeploys.IndexAgent
 
   setup do
-    set_live_file_content("index.html")
+    set_live_file_content("index:abc123.html")
     IndexAgent.update_index
     :ok
   end
@@ -16,16 +16,16 @@ defmodule PhoenixFrontendDeploys.IndexAgentTest do
   test "Stores the index.html file in agent" do
     result = IndexAgent.get
 
-    assert Regex.match?(~r/index.html/, result)
+    assert Regex.match?(~r/index:abc123.html/, result)
   end
 
   test "Updates the file based on content of live file" do
-    set_live_file_content("index2.html")
+    set_live_file_content("index:xyz123.html")
     IndexAgent.update_index
 
     result = IndexAgent.get
 
-    assert Regex.match?(~r/index2.html/, result)
+    assert Regex.match?(~r/index:xyz123.html/, result)
   end
 
 
