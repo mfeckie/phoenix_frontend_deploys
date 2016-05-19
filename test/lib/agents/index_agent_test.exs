@@ -6,6 +6,10 @@ defmodule PhoenixFrontendDeploys.IndexAgentTest do
   setup do
     set_live_file_content("index:abc123.html")
     IndexAgent.update_index
+
+    on_exit fn ->
+        set_live_file_content("index:abc123.html")
+    end
     :ok
   end
 
