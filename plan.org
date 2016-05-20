@@ -1,0 +1,4 @@
+* TODO ETAG support
+* TODO UI to swap out current index file to be served
+* TODO UI to show available revisions
+
