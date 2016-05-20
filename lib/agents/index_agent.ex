@@ -1,4 +1,10 @@
 defmodule PhoenixFrontendDeploys.IndexAgent do
+  @moduledoc """
+  Index agent is responsible for holding the currently activated index file and for updating it.
+
+  Requires a `live` file that holds the name of the activated revision.  This
+  is to allow for persitence in the event of a server restart.
+  """
   alias PhoenixFrontendDeploys.IndexAgent
 
   @asset_directory Application.get_env(:phoenix_frontend_deploys, :asset_directory)
@@ -15,10 +21,16 @@ defmodule PhoenixFrontendDeploys.IndexAgent do
     |> cache_index
   end
 
+  @doc """
+  Returns the currently active index file.
+  """
   def get do
     Agent.get(__MODULE__, fn index -> index end)
   end
 
+  @doc """
+  Updates the in memory index file to match the one named in the `live` file.
+  """
   def update_index do
     Agent.update(__MODULE__, fn _ ->
       get_live_index_filename
