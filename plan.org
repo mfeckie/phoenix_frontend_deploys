@@ -1,4 +1,10 @@
 * TODO ETAG support
+#+BEGIN_SRC elixir
+  defp etag_for_path(file_info) do
+    file_info(size: size, mtime: mtime) = file_info
+    {size, mtime} |> :erlang.phash2() |> Integer.to_string(16)
+  end
+#+END_SRC
 * TODO UI to swap out current index file to be served
 * TODO UI to show available revisions
 
