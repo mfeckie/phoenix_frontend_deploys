@@ -1,10 +1,7 @@
-* TODO ETAG support
-#+BEGIN_SRC elixir
-  defp etag_for_path(file_info) do
-    file_info(size: size, mtime: mtime) = file_info
-    {size, mtime} |> :erlang.phash2() |> Integer.to_string(16)
-  end
-#+END_SRC
+* DONE ETAG support
+CLOSED: [2016-05-21 Sat 15:45]
+** No, always consider index fresh to allow for asset fingeprinting to update user assets
+* Date/Time of revision once Elixir 1.3 is out
 * TODO UI to swap out current index file to be served
 * TODO UI to show available revisions
 
