@@ -6,8 +6,9 @@ defmodule PhoenixFrontendDeploys.RevisionsListTest do
 
   test "Gets revision list from directory" do
     revisions = RevisionsList.all
+    |> Enum.map(&( %{revision: &1.revision}))
 
-    assert revisions == ["abc123", "xyz123"]
+    assert revisions == [%{revision: "abc123"}, %{revision: "xyz123"}]
   end
 
 end

@@ -22,6 +22,7 @@ defmodule PhoenixFrontendDeploys.Mixfile do
   defp deps do
     [
       {:mix_test_watch, "~> 0.2", only: :dev},
+      {:ja_serializer, "~> 0.9.0"},
       {:phoenix, "~> 1.1", optional: true}
     ]
   end
