@@ -1,0 +1,33 @@
+<thead>
+  <tr>
+    <th>
+      Revision ID
+    </th>
+    <th>
+      Size
+    </th>
+    <th>
+      Time modified
+    </th>
+    <th>
+    </th>
+  </tr>
+</thead>
+<tbody>
+  {{#each revisions as |revision|}}
+    <tr>
+      <td>
+        {{revision.id}}
+      </td>
+      <td>
+        {{revision.size}}
+      </td>
+      <td>
+        {{revision.mtime}}
+      </td>
+      <td>
+        <button>Activate</button>
+      </td>
+    </tr>
+  {{/each}}
+</tbody>

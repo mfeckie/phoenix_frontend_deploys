@@ -1,4 +1,5 @@
 {
   "disableAnalytics": false,
+  "proxy": "http://localhost:4000",
   "usePods": true
 }
