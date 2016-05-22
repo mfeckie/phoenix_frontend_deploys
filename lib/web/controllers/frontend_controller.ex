@@ -1,5 +1,5 @@
 defmodule PhoenixFrontendDeploys.FrontendController do
-  use PhoenixFrontendDeploys.Web, :controller
+  use Phoenix.Controller
 
   alias PhoenixFrontendDeploys.IndexAgent
 
