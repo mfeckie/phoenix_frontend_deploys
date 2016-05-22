@@ -1,3 +1,3 @@
 defmodule PhoenixFrontendDeploys.Revision do
-  defstruct [:revision, :mtime, :size, :filename]
+  defstruct [:id, :revision, :mtime, :size, :filename]
 end
