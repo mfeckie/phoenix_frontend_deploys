@@ -9,6 +9,8 @@ defmodule PhoenixFrontendDeploys.IndexAgent do
 
   @asset_directory Application.get_env(:phoenix_frontend_deploys, :asset_directory)
   @live_filename Application.get_env(:phoenix_frontend_deploys, :live_filename)
+  @live_file_path Path.join([@asset_directory, @live_filename])
+
 
   def start_link do
     Agent.start_link(fn ->
@@ -19,6 +21,11 @@ defmodule PhoenixFrontendDeploys.IndexAgent do
   def initialize_index do
     get_live_index_filename
     |> cache_index
+  end
+
+  def activate(revision) do
+    File.write!(@live_file_path, "index:" <> revision <> ".html")
+    update_index
   end
 
   @doc """
