@@ -23,7 +23,7 @@ defmodule PhoenixFrontendDeploys.RevisionsController do
   def render_index(conn, _params) do
     current_revision = IndexAgent.current
     revisions = PhoenixFrontendDeploys.RevisionsList.all
-    |> PhoenixFrontendDeploys.RevisionSerializer.format(%{}, meta: %{current_revision: current_revision})
+    |> PhoenixFrontendDeploys.RevisionSerializer.format
     |> Poison.encode!
 
     conn

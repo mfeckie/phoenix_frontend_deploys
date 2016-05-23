@@ -14,8 +14,8 @@ defmodule PhoenixFrontendDeploys.RevisionsList do
 
   ## Examples
 
-      # iex> PhoenixFrontendDeploys.RevisionsList.all
-      # ["abc123", "xyz123"]
+  # iex> PhoenixFrontendDeploys.RevisionsList.all
+  # ["abc123", "xyz123"]
   """
   def all do
     Path.wildcard(@asset_directory <> "/*.html")
@@ -23,10 +23,17 @@ defmodule PhoenixFrontendDeploys.RevisionsList do
   end
 
   defp to_revision_struct(filename) do
-    File.stat!(filename)
+    revision = File.stat!(filename)
     |> time_and_size
     |> Map.put(:filename, filename)
     |> Map.put(:revision, to_revision(filename))
+
+    Map.put(revision, :active, active?(revision))
+  end
+
+  defp active?(%{revision: revision}) do
+    current = PhoenixFrontendDeploys.IndexAgent.current
+    current == revision
   end
 
   defp time_and_size(%{mtime: mtime, size: size}), do: %Revision{mtime: mtime, size: size}

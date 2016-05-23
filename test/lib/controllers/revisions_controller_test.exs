@@ -26,7 +26,7 @@ defmodule PhoenixFrontendDeploys.RevisionsControllerTest do
     |> deserialize
     |> Map.get(:attributes)
 
-    assert response == %{id: "abc123", mtime: "2016-5-22 14:13:25", size: 143}
+    assert response == %{active: true, id: "abc123", mtime: "2016-5-22 14:13:25", size: 143}
   end
 
   defp deserialize(%{resp_body: resp_body}) do
