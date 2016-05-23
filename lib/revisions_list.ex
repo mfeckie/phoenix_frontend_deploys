@@ -31,7 +31,7 @@ defmodule PhoenixFrontendDeploys.RevisionsList do
 
   defp time_and_size(%{mtime: mtime, size: size}), do: %Revision{mtime: mtime, size: size}
 
-  defp to_revision(filename) do
+  def to_revision(filename) do
     filename
     |> capture_revision
     |> extract_revision

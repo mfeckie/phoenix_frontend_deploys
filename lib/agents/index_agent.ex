@@ -23,9 +23,20 @@ defmodule PhoenixFrontendDeploys.IndexAgent do
     |> cache_index
   end
 
+  @doc"""
+  Given a revision id sets this as the current index
+  """
   def activate(revision) do
     File.write!(@live_file_path, "index:" <> revision <> ".html")
     update_index
+  end
+
+  @doc """
+  Returns the currently active revision
+  """
+  def current do
+    get_live_index_filename
+    |> PhoenixFrontendDeploys.RevisionsList.to_revision
   end
 
   @doc """

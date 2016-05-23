@@ -32,5 +32,12 @@ defmodule PhoenixFrontendDeploys.IndexAgentTest do
     assert Regex.match?(~r/index:xyz123.html/, result)
   end
 
+  test "Returns current revision" do
+    current_revision = IndexAgent.current
+
+    assert current_revision == "abc123"
+  end
+
+
 
 end
