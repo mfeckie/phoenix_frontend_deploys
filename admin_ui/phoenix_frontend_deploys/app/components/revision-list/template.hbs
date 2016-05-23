@@ -1,33 +1,38 @@
-<thead>
-  <tr>
-    <th>
-      Revision ID
-    </th>
-    <th>
-      Size
-    </th>
-    <th>
-      Time modified
-    </th>
-    <th>
-    </th>
-  </tr>
-</thead>
-<tbody>
-  {{#each revisions as |revision|}}
+<section>
+  <h1>Current Revision: {{active.id}}</h1>
+</section>
+<table>
+  <thead>
     <tr>
-      <td>
-        {{revision.id}}
-      </td>
-      <td>
-        {{revision.size}}
-      </td>
-      <td>
-        {{revision.mtime}}
-      </td>
-      <td>
-        <button onclick={{action 'activateRevision' revision}}>Activate</button>
-      </td>
+      <th>
+        Revision ID
+      </th>
+      <th>
+        Size
+      </th>
+      <th>
+        Time modified
+      </th>
+      <th>
+      </th>
     </tr>
-  {{/each}}
-</tbody>
+  </thead>
+  <tbody>
+    {{#each revisions as |revision|}}
+      <tr class="{{if revision.active 'active'}}">
+        <td>
+          {{revision.id}}
+        </td>
+        <td>
+          {{revision.size}}
+        </td>
+        <td>
+          {{revision.mtime}}
+        </td>
+        <td>
+          <button onclick={{action 'activateRevision' revision}}>Activate</button>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
