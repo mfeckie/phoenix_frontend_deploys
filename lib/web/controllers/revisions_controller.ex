@@ -36,7 +36,7 @@ defmodule PhoenixFrontendDeploys.RevisionsController do
     IndexAgent.activate(revision)
 
     conn
-    |> json("OK")
+    |> json(%{revision: revision})
   end
 
 

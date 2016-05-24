@@ -1,16 +1,35 @@
 defmodule TestApp.Router do
   use Phoenix.Router
 
-  get "/frontends", PhoenixFrontendDeploys.FrontendController, :index
+  require PhoenixFrontendDeploys.Router
+  alias PhoenixFrontendDeploys.Router
 
+  Router.frontend
 
-  get "/revisions", TestController, :index
-  post "revisions/activate", TestController, :activate
+  Router.admin(TestController)
+
 end
 
-defmodule TestApp do
+
+defmodule TestApp.Endpoint do
   use Phoenix.Endpoint, otp_app: :test_app
   plug TestApp.Router
+end
+
+
+defmodule TestApp do
+  use Application
+
+  def start(_blah, _blah2) do
+    import Supervisor.Spec, warn: false
+
+    children = [
+      supervisor(TestApp.Endpoint, [])
+    ]
+
+    opts = [strategy: :one_for_one, name: TestApp.Supervisor]
+    Supervisor.start_link(children, opts)
+  end
 end
 
 defmodule TestController do
