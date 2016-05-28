@@ -22,7 +22,7 @@ defmodule PhoenixFrontendDeploys.RevisionsControllerTest do
   test "Returns serialized list of revisions" do
     conn = conn(:get, "/")
 
-    response = TestController.index(conn, [])
+    response = TestApp.RevisionsController.index(conn, [])
     |> deserialize
     |> Map.get(:attributes)
 
@@ -39,7 +39,7 @@ defmodule PhoenixFrontendDeploys.RevisionsControllerTest do
     post_conn = conn(:post, "/")
 
     # We're not testing the routing of the post_conn, only how we deal with the params
-    TestController.activate(post_conn, %{"revision" => "xyz123"})
+    TestApp.RevisionsController.activate(post_conn, %{"revision" => "xyz123"})
 
     index_now = IndexAgent.get
 
