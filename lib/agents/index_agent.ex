@@ -62,7 +62,7 @@ defmodule PhoenixFrontendDeploys.IndexAgent do
   end
 
   defp cache_index(filename) do
-    Path.join([@asset_directory, filename])
+    Path.join([@asset_directory, String.strip(filename)])
   end
 
 end
