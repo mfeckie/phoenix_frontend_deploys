@@ -3,11 +3,11 @@ defmodule PhoenixFrontendDeploys.Mixfile do
 
   def project do
     [app: :phoenix_frontend_deploys,
-     version: "0.0.1",
+     version: "0.0.1-alpha.0",
      elixir: "~> 1.2",
      elixirc_paths: elixirc_paths(Mix.env),
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
+     description: description,
+     package: package,
      deps: deps]
   end
 
@@ -21,9 +21,28 @@ defmodule PhoenixFrontendDeploys.Mixfile do
 
   defp deps do
     [
+      {:earmark, "~> 0.1", only: :dev},
+      {:ex_doc, "~> 0.11", only: :dev},
       {:mix_test_watch, "~> 0.2", only: :dev},
       {:ja_serializer, "~> 0.9.0"},
       {:phoenix, "~> 1.1", optional: true}
+    ]
+  end
+
+  defp description do
+    """
+    An extension for Phoenix to faciliate live frontend deploys
+    """
+  end
+
+  defp package do
+    [
+      name: :phoenix_frontend_deploys,
+      maintainers: ["Martin Feckie"],
+      licenses: ["MIT"],
+      links: %{
+        "Github" => "https://github.com/mfeckie/phoenix_frontend_deploys"
+      }
     ]
   end
 end

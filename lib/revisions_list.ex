@@ -11,11 +11,6 @@ defmodule PhoenixFrontendDeploys.RevisionsList do
 
   @doc """
   Returns a list of the revisions available in the asset directory
-
-  ## Examples
-
-  # iex> PhoenixFrontendDeploys.RevisionsList.all
-  # ["abc123", "xyz123"]
   """
   def all do
     Path.wildcard(@asset_directory <> "/*.html")
@@ -38,6 +33,7 @@ defmodule PhoenixFrontendDeploys.RevisionsList do
 
   defp time_and_size(%{mtime: mtime, size: size}), do: %Revision{mtime: mtime, size: size}
 
+  @doc false
   def to_revision(filename) do
     filename
     |> capture_revision

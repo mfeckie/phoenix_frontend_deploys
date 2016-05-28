@@ -28,3 +28,10 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 import_config "#{Mix.env}.exs"
+
+config :phoenix_frontend_deploys,
+  asset_directory: System.cwd <> "/test/frontend_assets",
+  live_filename: "live",
+  frontend: [frontend_url: "/frontends",
+             frontend_controller: TestApp.FrontendController,
+             frontend_function: :index]
