@@ -2,14 +2,28 @@
   background-color: $site-blue;
   box-sizing: border-box;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   p {
     a {
+      border: none;
+      color: white;
       font-size: 1.8em;
       font-weight: 600;
-      border: none;
+      padding: 10px;
       text-decoration: none;
-      color: white;
+    }
+  }
+  p:last-child {
+    background-color: get-color('blue', 500);
+    margin: 0px;
+    margin-right: 10px;
+    padding: 10px;
+    transition: background-color .3s;
+    a {
+      padding: 10px;
+    }
+    &:hover {
+      background-color: get-color('blue', 700);
     }
   }
 }
