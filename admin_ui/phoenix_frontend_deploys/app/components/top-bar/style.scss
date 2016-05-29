@@ -1,10 +1,9 @@
 #top-bar {
   background-color: $site-blue;
   box-sizing: border-box;
-  display: block;
+  display: flex;
+  justify-content: center;
   p {
-    margin-top: 0px;
-    padding: 5px;
     a {
       font-size: 1.8em;
       font-weight: 600;

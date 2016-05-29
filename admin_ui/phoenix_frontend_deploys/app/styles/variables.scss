@@ -1,6 +1,4 @@
-$site-beige:  #F8FFE5;
-$site-green: #06D6A0;
-$site-blue: #1B9AAA;
-$site-red: #EF476F;
-$site-yellow: #FFC43D;
-$site-grey: #F1F1F1;
+@import "variables/material_colors";
+
+$site-blue: get-color('blue', 600);
+$site-grey: get-color('grey', 100);
