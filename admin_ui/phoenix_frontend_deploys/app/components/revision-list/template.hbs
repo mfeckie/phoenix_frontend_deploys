@@ -1,8 +1,10 @@
 <main>
-  <h1>Revisions</h1>
-  <section>
-    <h2>Current Revision: {{active.id}}</h2>
-  </section>
+  <header>
+    <h1>Revisions</h1>
+    <h2>
+      Active Revision: <span>{{active.id}}</span>
+    </h2>
+  </header>
   <section>
     <ul>
       <li>
@@ -10,20 +12,15 @@
           Revision ID
         </div>
         <div>
-          Size
+          Created
         </div>
         <div>
-          Update Time
-        </div>
-        <div>
-          Activation
         </div>
       </li>
       {{#each revisions as |revision|}}
         <li>
           <div>{{revision.id}}</div>
-          <div>{{revision.size}}</div>
-          <div>{{revision.mtime}}</div>
+          <div>{{moment-from-now revision.mtime}}</div>
           <div>
             {{#if revision.active}}
               <button class="active" disabled=true>Active</button>
