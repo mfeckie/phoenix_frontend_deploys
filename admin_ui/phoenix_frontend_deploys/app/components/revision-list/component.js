@@ -14,7 +14,7 @@ export default Ember.Component.extend({
         this.get('store').findAll('revision');
       };
 
-      ajax.post('/test/api/revisions/activate', {
+      ajax.post('/frontend_api/revisions/activate', {
         data: {
           revision: revision.id
         }
